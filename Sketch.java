@@ -108,11 +108,17 @@ public class Sketch extends PApplet {
    * Draws the player's information, such as lives and score.
    */
   public void drawInfo() {
-    fill(255, 0, 0);
 
     for (int i = 0; i < playerLives; i++) {
-      rect(width - 35 - i * 40, 10, 30, 30);
+      stroke(0);
+      fill(255, 0, 0);
+      rect(width - 35 - i * 30, 10, 30, 10);
     }
+
+    noFill();
+    rect(width - 95, 10, 30, 10);
+    rect(width - 65, 10, 30, 10);
+    rect(width - 35, 10, 30, 10);
 
     if (frameCount % 60 == 0 && playerLives > 0) {
       score++;
