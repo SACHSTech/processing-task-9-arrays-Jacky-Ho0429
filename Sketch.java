@@ -9,9 +9,8 @@ public class Sketch extends PApplet {
   float[] snowY;
   float[] ySpeed;
   boolean[] ballHideStatus;
-  int numSnowflakes = 5;
+  int numSnowflakes = 10;
   int snowRadius = 20;
-  int reachedBottom = 0; 
 
   float playerX = width / 2;
   float playerY;
@@ -73,9 +72,8 @@ public class Sketch extends PApplet {
     for (int i = 0; i < numSnowflakes; i++) {
 
       if (ballHideStatus[i]) {
-        snowX[i] = random(width);
+        snowX[i] = random(width - 100);
         snowY[i] = random(-200, 0);
-        ballHideStatus[i] = false;
       }
 
       if (!ballHideStatus[i]) {
@@ -84,12 +82,14 @@ public class Sketch extends PApplet {
         if (snowY[i] > height) {
           snowX[i] = random(width);
           snowY[i] = random(-200, 0);
-          reachedBottom++;
         }
 
-        if (reachedBottom == numSnowflakes * 2) {
+        if (keyCode == UP && ySpeed[i] < 10) {
           ySpeed[i]++;
-          reachedBottom = 0;
+          delay(60);
+        } else if (keyCode == DOWN && ySpeed[i] > 1)  {
+          ySpeed[i]--;
+          delay(60);
         }
 
         if (dist(snowX[i], snowY[i], playerX, playerY) < playerRadius) {
