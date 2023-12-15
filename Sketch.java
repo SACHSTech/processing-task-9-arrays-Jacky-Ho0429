@@ -94,7 +94,8 @@ public class Sketch extends PApplet {
 
         if (dist(snowX[i], snowY[i], playerX, playerY) < playerRadius) {
           playerLives--;
-          ballHideStatus[i] = true;
+          snowX[i] = random(width);
+          snowY[i] = random(-200, 0);
         }
 
         if (!ballHideStatus[i]) {
