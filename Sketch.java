@@ -57,7 +57,8 @@ public class Sketch extends PApplet {
     for (int i = 0; i < numSnowflakes; i++) {
       snowX[i] = random(width);
       snowY[i] = random(-200, 0);
-      ySpeed[i] = 2;
+      ySpeed[i] = i/3
+      ;
       ballHideStatus[i] = false;
     }
   }
